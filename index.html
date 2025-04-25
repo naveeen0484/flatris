@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Vulnerable Page</title>
+    <script>
+        // Vulnerability: Cross-Site Scripting (XSS)
+        function greetUser() {
+            const userInput = document.getElementById('name').value;
+            document.getElementById('greeting').innerHTML = "Hello, " + userInput + "!";
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Vulnerable Page</h1>
+
+    <p>Enter your name:</p>
+    <input type="text" id="name">
+    <button onclick="greetUser()">Greet Me</button>
+
+    <p id="greeting"></p>
+
+    <script>
+        // Vulnerability: Using eval() (can lead to script injection)
+        function calculate() {
+            const expression = document.getElementById('expression').value;
+            try {
+                const result = eval(expression);
+                document.getElementById('result').innerHTML = "Result: " + result;
+            } catch (e) {
+                document.getElementById('result').innerHTML = "Error: " + e.message;
+            }
+        }
+    </script>
+
+    <p>Calculate expression:</p>
+    <input type="text" id="expression">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>
