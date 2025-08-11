@@ -1,18 +1,17 @@
 trigger:
   branches:
     include:
-      - main   # change if your default branch is different
+      - main   # change if your branch is different
 
 variables:
-  # Replace with your ACR details
-  ACR_NAME: myacrnvn
+  ACR_NAME: youracrname   # your Azure Container Registry name
   IMAGE_NAME: flatris
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: self
+  - checkout: self
     displayName: 'Checkout repository'
 
   - task: Docker@2
