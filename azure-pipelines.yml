@@ -12,7 +12,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: Checkout@v3
+  - task: self
     displayName: 'Checkout repository'
 
   - task: Docker@2
